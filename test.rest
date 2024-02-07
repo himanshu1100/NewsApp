@@ -1,0 +1,2 @@
+GET localhost:3000/main
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiaHNpbmdhbDIwMEBnbWFpbC5jb20iLCJpYXQiOjE3MDcxMjI1NTB9.-QjibOTGmacxh89IjHmYEwi5oFAyFZs657t4azBhBP8
