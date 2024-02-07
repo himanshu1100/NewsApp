@@ -79,4 +79,29 @@ async function deleteOne(id){
     }
 
 }
-module.exports = { allData, add, check, latestNews,deleteOne };
+
+async function newUser(email,password){
+    try{
+      
+        const db =await client.db('24x7');
+        const collection = await db.collection('user-name');
+        const user = await collection.findOne({"username":email});
+        if(user){
+            return null;
+        }
+        console.log("hiii");
+        await collection.insertOne({"username":email,"password":password});
+        return 1;
+
+
+        
+       
+
+    }
+    catch(err){
+        console.log(err);
+       
+    }
+
+}
+module.exports = { allData, add, check, latestNews,deleteOne ,newUser};

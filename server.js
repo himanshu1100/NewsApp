@@ -1,5 +1,5 @@
 const express = require("express");
-const {check,add,allData, latestNews ,deleteOne} = require("./mongo");
+const {check,add,allData, latestNews ,deleteOne,newUser} = require("./mongo");
 const bodyParser = require("body-parser")
 const app = express();
 const cors = require("cors");
@@ -31,6 +31,19 @@ app.post("/check",urlencodedParser,async(req,res)=>{
             res.redirect("./main");
     }
     else res.send("bad");
+
+
+})
+
+app.post("/signup",async (req,res)=>{
+    const {name,email,password} = req.body;
+    const status = await newUser(email,password);
+    if(status==null)res.send("already here");
+    const t = jwt.sign({user:email},process.env.secret_key);
+    res.cookie('token', t, { httpOnly : true});
+    console.log(res.cookie);
+    res.redirect("./main");
+
 
 
 })
