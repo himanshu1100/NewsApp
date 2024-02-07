@@ -1,5 +1,5 @@
 const express = require("express");
-const {check,add,allData, latestNews} = require("./mongo");
+const {check,add,allData, latestNews ,deleteOne} = require("./mongo");
 const bodyParser = require("body-parser")
 const app = express();
 const cors = require("cors");
@@ -80,10 +80,15 @@ async function middleware(req,res,nex){
     });
    
 }
-
+app.post("/delete",middleware,async(req,res)=>{
+    console.log(req.body.delete);
+    await deleteOne(req.body.delete);
+    res.redirect("./items");
+})
 app.get("/getNews",async(req,res)=>{
     const data = await latestNews();
     res.json(data);
+   
 })
 app.listen("3000",()=>{
     console.log("working on localhost:3000");

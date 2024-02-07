@@ -12,6 +12,8 @@ async function getweather(){
     let temp = document.createElement("h2")
     let city = document.createElement("h2");
     let wtr = document.createElement("h2");
+    let icon = document.createElement("img")
+    
     wtr.innerText = data.weather[0].description;
     city.innerText = data.name;
     temp.innerText = data.main.temp;
@@ -31,6 +33,7 @@ async function getNews(){
     ).then((json)=>json);
     
     const articles = news.querySelectorAll('article');
+    console.log(data);
     fullNews.querySelector('p').innerHTML=data[0].Discription;
     console.log(articles);
     console.log(img);

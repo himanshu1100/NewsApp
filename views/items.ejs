@@ -80,8 +80,8 @@
                 <% for(let i = 0; i < data.length; i++) { %>
                 <tr>
                     <td><%= data[i].title %></td>
-                    <td><%= data[i].discription %></td>
-                    <td><Button>delete</Button></td>
+                    <td><%= data[i].Discription %></td>
+                    <td><form action="/delete" method="post"><Button value=<%= data[i]._id %> name="delete">delete</Button></form></td>
                 </tr>
                 <% } %>
             </tbody>

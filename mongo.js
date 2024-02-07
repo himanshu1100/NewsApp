@@ -1,5 +1,5 @@
 
-const {MongoClient} = require("mongodb");
+const {MongoClient, ObjectId} = require("mongodb");
 const url  = 'mongodb://localhost:27017';
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -16,7 +16,6 @@ async function check(username,password){
         console.log(error);
         
     }
-    
 }
 async function add(obj){
     try {
@@ -62,4 +61,22 @@ async function latestNews(){
         return null;
     }
 }
-module.exports = { allData, add, check, latestNews };
+async function deleteOne(id){
+    try{
+      
+        const db =await client.db('24x7');
+        const collection = await db.collection('newsFeed');
+        const data = await collection.findOne({"_id":new ObjectId(id)});
+        console.log(data);
+        await collection.deleteOne({"_id":new ObjectId(id)})
+        
+       
+
+    }
+    catch(err){
+        console.log(err);
+       
+    }
+
+}
+module.exports = { allData, add, check, latestNews,deleteOne };
