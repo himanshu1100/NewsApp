@@ -61,6 +61,20 @@ async function latestNews(){
         return null;
     }
 }
+async function latestSportsNews(){
+    try{
+        const db =await client.db('24x7');
+        const collection = await db.collection('newsFeed');
+        const data = await collection.find({"sports":"on"}).sort({"published":-1}).limit(3).toArray();
+        console.log(data);
+        return data;
+
+    }
+    catch(err){
+        console.log(error);
+        return null;
+    }
+}
 async function deleteOne(id){
     try{
       
@@ -104,4 +118,4 @@ async function newUser(email,password){
     }
 
 }
-module.exports = { allData, add, check, latestNews,deleteOne ,newUser};
+module.exports = { allData, add, check, latestNews,deleteOne ,newUser,latestSportsNews};

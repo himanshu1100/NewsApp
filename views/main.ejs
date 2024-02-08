@@ -35,8 +35,9 @@
 
         input {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 16px;
+            padding: 10px;
+            margin-bottom:10;
+         
             box-sizing: border-box;
         }
 
@@ -52,6 +53,15 @@
         button:hover {
             background-color: #0056b3;
         }
+        #sports {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+           margin: inherit;
+           padding: inherit;
+           font-weight: bold;
+        }
+       
     </style>
 </head>
 <body>
@@ -84,8 +94,10 @@
         <input type="text" id="URLtoImage" name="img" required>
 
         <label for="publishedAt">Published at</label>
-        <input type="text" id="publishedAt" name="published" required>
 
+        <input type="datetime" id="publishedAt" name="published" required>
+        <div id="sports" "><label style="font-weight: bolder;" for="sports"></label> Sport</label><input type="checkbox" name="sports" id="sports">
+        </div>
         <button type="submit">Submit</button>
     </form>
 </main>

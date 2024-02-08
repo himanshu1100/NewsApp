@@ -1,5 +1,5 @@
 const express = require("express");
-const {check,add,allData, latestNews ,deleteOne,newUser} = require("./mongo");
+const {check,add,allData, latestNews ,deleteOne,newUser,latestSportsNews} = require("./mongo");
 const bodyParser = require("body-parser")
 const app = express();
 const cors = require("cors");
@@ -67,7 +67,8 @@ app.post("/add",middleware,urlencodedParser,async (req,res)=>{
         'Discription':req.body.Discription,
         'url':req.body.url,
         'urlToImage':req.body.img,
-        'published':req.body.published
+        'published':req.body.published,
+        'sports':req.body.sports
 
     }
     await add(obj);
@@ -100,6 +101,11 @@ app.post("/delete",middleware,async(req,res)=>{
 })
 app.get("/getNews",async(req,res)=>{
     const data = await latestNews();
+    res.json(data);
+   
+})
+app.get("/getSportsNews",async(req,res)=>{
+    const data = await latestSportsNews();
     res.json(data);
    
 })

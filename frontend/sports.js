@@ -74,7 +74,7 @@ async function getLocation() {
 
 getLocation();
 async function getNews(){
-    let data =await  fetch("http://127.0.0.1:3000/getNews",{
+    let data =await  fetch("http://127.0.0.1:3000/getSportsNews",{
         method:"GET"
     }).then((res)=>
         res.json()
