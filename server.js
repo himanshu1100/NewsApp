@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const {check,add,allData, latestNews ,deleteOne,newUser,latestSportsNews} = require("./mongo");
 const bodyParser = require("body-parser")
 const app = express();
@@ -7,7 +8,8 @@ const cors = require("cors");
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
-require('dotenv').config();
+
+//console.log(process.env.secret_key,process.env.MONGODB_URI);
 var urlencodedParser = bodyParser.urlencoded({ extended: false }) ;
 
 app.set("view engine","ejs");
